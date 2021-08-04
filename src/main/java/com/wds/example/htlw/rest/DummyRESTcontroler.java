@@ -2,6 +2,7 @@ package com.wds.example.htlw.rest;
 
 import com.wds.example.htlw.domain.Person;
 import com.wds.example.htlw.persistence.PersonRepository;
+import lombok.var;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
