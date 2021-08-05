@@ -3,8 +3,7 @@ package com.wds.example.htlw.rest;
 import com.wds.example.htlw.domain.Person;
 import com.wds.example.htlw.persistence.PersonRepository;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
@@ -27,4 +26,24 @@ public class DummyRESTcontroler {
         }
         return persons;
     }
+    @PostMapping("persons")
+    public Person postPersons(@RequestBody Person personToInsert) {
+        personRepository.save(personToInsert);
+        return personToInsert;
+    }
+    @GetMapping("persons/{id}")
+    public Person getPersonById(@PathVariable int id) {
+
+        return personRepository.findById(id)
+                .orElse( null);
+    }
+    @DeleteMapping("persons/{id]")
+    public void deletePerson(@PathVariable int id){
+        personRepository.deleteById(id);
+    }
+    @PutMapping("persons")
+    public Person putPerson(@RequestBody Person updatedPerson){
+        return personRepository.save(updatedPerson);
+    }
+
 }
